@@ -22,12 +22,7 @@ pipeline {
             }
         }
        
-        stage('Assemble') {
-            steps {
-                gradlew('assemble')
-                stash includes: '**/build/libs/*.war', name: 'app'
-            }
-        }
+      
         stage('Promotion') {
             steps {
                 timeout(time: 1, unit:'DAYS') {
