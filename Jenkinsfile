@@ -21,23 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Long-running Verification') {
-            environment {
-            }
-            parallel {
-                stage('Integration Tests') {
-                    steps {
-                        gradlew('integrationTest')
-                    }
-                    post {
-                        always {
-                            junit '**/build/test-results/integrationTest/TEST-*.xml'
-                        }
-                    }
-                }
-               
-            }
-        }
+       
         stage('Assemble') {
             steps {
                 gradlew('assemble')
